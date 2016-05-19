@@ -21,7 +21,7 @@ public class PlayerZChecks : MonoBehaviour
 		{
 	        if (other.tag == "ground")
 	        {
-	            Debug.Log("hit!!!");
+	            //Debug.Log("hit!!!");
 				isHittingAway = true;
 	        }
 		}
@@ -30,7 +30,7 @@ public class PlayerZChecks : MonoBehaviour
 		{
 			if (other.tag == "ground")
 			{
-				Debug.Log("hit!!!");
+				//Debug.Log("hit!!!");
 				isHittingTowards = true;
 			}
 		}
@@ -43,7 +43,7 @@ public class PlayerZChecks : MonoBehaviour
 		{
 			if (other.tag == "ground")
 			{
-				Debug.Log("exited");
+				//Debug.Log("exited");
 				isHittingAway = false;
 			}
 		}
@@ -52,7 +52,7 @@ public class PlayerZChecks : MonoBehaviour
 		{
 			if (other.tag == "ground")
 			{
-				Debug.Log("exited");
+				//Debug.Log("exited");
 				isHittingTowards = false;
 			}
 		}

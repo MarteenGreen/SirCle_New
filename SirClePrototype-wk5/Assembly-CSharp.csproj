@@ -6,7 +6,7 @@
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
 	<RootNamespace></RootNamespace>
-	<ProjectGuid>{B479DCF8-DF2F-AC4D-4646-A60E68B04909}</ProjectGuid>
+	<ProjectGuid>{DB307B8E-75FB-161A-4CB3-06A971B6BC89}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<AssemblyName>Assembly-CSharp</AssemblyName>
@@ -50,17 +50,17 @@
      <Compile Include="Assets\AndrewMenus\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\AndrewMenus\Scripts\SettingsMenu.cs" />
      <Compile Include="Assets\AndrewMenus\Scripts\StartScreen.cs" />
-     <Compile Include="Assets\LaneSwapping.cs" />
-     <Compile Include="Assets\PlayerZChecks.cs" />
      <Compile Include="Assets\Scripts\Game\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Game\CameraRaycast.cs" />
+     <Compile Include="Assets\Scripts\Game\LaneSwapping.cs" />
      <Compile Include="Assets\Scripts\Player\CharacterMotor.cs" />
      <Compile Include="Assets\Scripts\Player\DealDamage.cs" />
      <Compile Include="Assets\Scripts\Player\DoubleJumpEnabler.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMove.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerZChecks.cs" />
      <Compile Include="Assets\Scripts\Player\RangedAttack.cs" />
      <Compile Include="Assets\Scripts\Player\ScriptProjectile.cs" />
-     <Compile Include="Assets\StopRotation.cs" />
+     <Compile Include="Assets\Scripts\Player\StopRotation.cs" />
      <None Include="Assets\Scripts\Outline_Glow.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

@@ -26,7 +26,11 @@ public class CameraRaycast : MonoBehaviour
                 toHide.GetComponent<MeshRenderer>().enabled = false;
                 turnInvisible = true;
             }
+
+            if (toHide.GetComponent<MeshRenderer>().enabled == false && hit.transform.tag == "Player")
+            {
+                toHide.GetComponent<MeshRenderer>().enabled = true;
+            }
         }
-        
     }
 }
