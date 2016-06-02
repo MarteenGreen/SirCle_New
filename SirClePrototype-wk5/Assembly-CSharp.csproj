@@ -59,6 +59,13 @@
      <Compile Include="Assets\LaneSwapping.cs" />
      <Compile Include="Assets\PlayerZChecks.cs" />
      <Compile Include="Assets\Scripts\Game\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\Game\CameraRaycast.cs" />
+     <Compile Include="Assets\Scripts\Game\Cannon.cs" />
+     <Compile Include="Assets\Scripts\Game\Death.cs" />
+     <Compile Include="Assets\Scripts\Game\Goons\BasicGoonAI.cs" />
+     <Compile Include="Assets\Scripts\Game\Goons\RangeCheck.cs" />
+     <Compile Include="Assets\Scripts\Game\HP.cs" />
+     <Compile Include="Assets\Scripts\Game\IFrames.cs" />
      <Compile Include="Assets\Scripts\Player\CharacterMotor.cs" />
      <Compile Include="Assets\Scripts\Player\DealDamage.cs" />
      <Compile Include="Assets\Scripts\Player\DoubleJumpEnabler.cs" />
@@ -66,7 +73,10 @@
      <Compile Include="Assets\Scripts\Player\RangedAttack.cs" />
      <Compile Include="Assets\Scripts\Player\ScriptProjectile.cs" />
      <Compile Include="Assets\StopRotation.cs" />
+     <None Include="Assets\Standard Assets\Effects\Projectors\Guidelines.txt" />
      <None Include="Assets\Scripts\Outline_Glow.shader" />
+     <None Include="Assets\Standard Assets\Effects\Projectors\Shaders\ProjectorLight.shader" />
+     <None Include="Assets\Standard Assets\Effects\Projectors\Shaders\ProjectorMultiply.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
