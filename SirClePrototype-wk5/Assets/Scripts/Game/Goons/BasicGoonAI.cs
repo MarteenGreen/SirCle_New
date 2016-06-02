@@ -14,12 +14,14 @@ public class BasicGoonAI : MonoBehaviour
     public float h = 1;//H is for horizontal!
     public BoxCollider swapTrigger;
     public RangeCheck Vision;
+    private LaneSwapping swapEm;
 
 
     // Use this for initialization
     void Awake()
     {
         rbd = GetComponent<Rigidbody>();
+        swapEm = GetComponent<LaneSwapping>();
     }
 
     // Update is called once per frame
@@ -45,6 +47,11 @@ public class BasicGoonAI : MonoBehaviour
                 Flip();
             else if (h < 0 && facingRight)
                 Flip();
+
+            if (plyrTrans.position.z - transform.position.z < -.5)
+                swapEm.LaneSwapTowards();
+            else if(plyrTrans.position.z - transform.position.z > .5)
+                swapEm.LaneSwapAway();
         }
     }
 
