@@ -13,8 +13,10 @@ public class BasicGoonAI : MonoBehaviour
     private Rigidbody rbd;
     public float h = 1;//H is for horizontal!
     public BoxCollider swapTrigger;
-    public RangeCheck Vision;
+    private RangeCheck vision;
     private LaneSwapping swapEm;
+    private bool swapped = false;
+    public float swapCD;
 
 
     // Use this for initialization
@@ -22,6 +24,7 @@ public class BasicGoonAI : MonoBehaviour
     {
         rbd = GetComponent<Rigidbody>();
         swapEm = GetComponent<LaneSwapping>();
+        vision = GetComponent<RangeCheck>();
     }
 
     // Update is called once per frame
@@ -32,7 +35,7 @@ public class BasicGoonAI : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Vision.IsInRange())//If the player is close, move towards them
+        if (vision.IsInRange())//If the player is close, move towards them
         {
             h = plyrTrans.position.x - transform.position.x;
             h /= Mathf.Abs(h);//h is used as left/right flip. we only care if it's negative or not.
@@ -48,10 +51,19 @@ public class BasicGoonAI : MonoBehaviour
             else if (h < 0 && facingRight)
                 Flip();
 
-            if (plyrTrans.position.z - transform.position.z < -.5)
-                swapEm.LaneSwapTowards();
-            else if(plyrTrans.position.z - transform.position.z > .5)
-                swapEm.LaneSwapAway();
+            if (!swapped)
+            {
+                if (plyrTrans.position.z - transform.position.z < -.5)
+                {
+                    StartCoroutine("WaitNSwap");
+                    swapEm.LaneSwapTowards();
+                }
+                else if (plyrTrans.position.z - transform.position.z > .5)
+                {
+                    StartCoroutine("WaitNSwap");
+                    swapEm.LaneSwapAway();
+                }
+            }
         }
     }
 
@@ -69,5 +81,12 @@ public class BasicGoonAI : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+    IEnumerator WaitNSwap()
+    {
+        swapped = true;
+        yield return new WaitForSeconds(swapCD);
+        swapped = false;
     }
 }

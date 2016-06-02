@@ -59,6 +59,14 @@
      <Compile Include="Assets\LaneSwapping.cs" />
      <Compile Include="Assets\PlayerZChecks.cs" />
      <Compile Include="Assets\Scripts\Game\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\Game\Cannon.cs" />
+     <Compile Include="Assets\Scripts\Game\DayNight.cs" />
+     <Compile Include="Assets\Scripts\Game\Death.cs" />
+     <Compile Include="Assets\Scripts\Game\Goons\BasicGoonAI.cs" />
+     <Compile Include="Assets\Scripts\Game\Goons\EliteGoonShoot.cs" />
+     <Compile Include="Assets\Scripts\Game\Goons\RangeCheck.cs" />
+     <Compile Include="Assets\Scripts\Game\HP.cs" />
+     <Compile Include="Assets\Scripts\Game\IFrames.cs" />
      <Compile Include="Assets\Scripts\Player\CharacterMotor.cs" />
      <Compile Include="Assets\Scripts\Player\DealDamage.cs" />
      <Compile Include="Assets\Scripts\Player\DoubleJumpEnabler.cs" />

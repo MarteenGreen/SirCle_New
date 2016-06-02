@@ -17,7 +17,7 @@ public class Cannon : MonoBehaviour
 
     private bool CanShoot;
 
-    public float leftOrRight;
+    public float leftOrRight = -90;
 
     // Use this for initialization
     void Start()
@@ -28,8 +28,6 @@ public class Cannon : MonoBehaviour
     //Runs every frame
     void Update()
     {
-
-        leftOrRight = -90f;
 
         if (CanShoot)
         {
@@ -71,5 +69,10 @@ public class Cannon : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         CanShoot = true;
+    }
+
+    public void setCanShoot(bool shootEm)
+    {
+        CanShoot = shootEm;
     }
 }
