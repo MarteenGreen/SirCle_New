@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RangeCheck : MonoBehaviour {
-    private bool InRange;
+public class JumpPad : MonoBehaviour {
+
+    public float force;
+	// Use this for initialization
 	// Use this for initialization
 	void Start () {
 	
@@ -15,23 +17,19 @@ public class RangeCheck : MonoBehaviour {
 
     void OnTriggerStay(Collider other)
     {
-        
         if(other.tag == "Player")
         {
-            InRange = true;
+            Debug.Log("Butts");
+            other.GetComponent<Rigidbody>().AddForce(0, force, 0);
         }
     }
 
-    void OnTriggerExit(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            InRange = false;
+            Debug.Log("Butts");
+            other.GetComponent<Rigidbody>().AddForce(0, force + 50, 0);
         }
-    }
-
-    public bool IsInRange()
-    {
-        return InRange;
     }
 }

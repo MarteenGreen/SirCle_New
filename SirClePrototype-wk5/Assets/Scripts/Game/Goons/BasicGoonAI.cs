@@ -15,8 +15,14 @@ public class BasicGoonAI : MonoBehaviour
     public BoxCollider swapTrigger;
     private RangeCheck vision;
     private LaneSwapping swapEm;
+    private GeneralZCheck[] zChk;
+    private GeneralZCheck zChkAwy;
+    private GeneralZCheck zChkTwrd;
     private bool swapped = false;
     public float swapCD;
+    public float RANDswapCD;
+    private int rand;
+    private bool RANDSwapped = false;
 
 
     // Use this for initialization
@@ -24,12 +30,24 @@ public class BasicGoonAI : MonoBehaviour
     {
         rbd = GetComponent<Rigidbody>();
         swapEm = GetComponent<LaneSwapping>();
-        vision = GetComponent<RangeCheck>();
+        vision = GetComponentInChildren<RangeCheck>();
+        zChk = GetComponentsInChildren<GeneralZCheck>();
+        if(zChk[0].away)
+        {
+            zChkAwy = zChk[0];
+            zChkTwrd = zChk[1];
+        }
+        else
+        {
+            zChkAwy = zChk[1];
+            zChkTwrd = zChk[0];
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        rand = Random.Range(0, 1);
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, lockPos, lockPos);
     }
 
@@ -37,6 +55,7 @@ public class BasicGoonAI : MonoBehaviour
     {
         if (vision.IsInRange())//If the player is close, move towards them
         {
+            Debug.Log("hello");
             h = plyrTrans.position.x - transform.position.x;
             h /= Mathf.Abs(h);//h is used as left/right flip. we only care if it's negative or not.
 
@@ -53,15 +72,26 @@ public class BasicGoonAI : MonoBehaviour
 
             if (!swapped)
             {
-                if (plyrTrans.position.z - transform.position.z < -.5)
+                if (plyrTrans.position.z - transform.position.z < -.5 && zChkAwy.isHittingAway == false)
                 {
                     StartCoroutine("WaitNSwap");
                     swapEm.LaneSwapTowards();
                 }
-                else if (plyrTrans.position.z - transform.position.z > .5)
+                else if (plyrTrans.position.z - transform.position.z > .5 && zChkTwrd.isHittingTowards == false)
                 {
                     StartCoroutine("WaitNSwap");
                     swapEm.LaneSwapAway();
+                }
+            }
+            if (!RANDSwapped)
+            {
+                if (zChkAwy.isHittingAway == false && zChkTwrd.isHittingTowards == false)
+                {
+                    StartCoroutine("WaitNRandSwap");
+                    if (rand == 0)
+                        swapEm.LaneSwapTowards();
+                    else
+                        swapEm.LaneSwapAway();
                 }
             }
         }
@@ -88,5 +118,11 @@ public class BasicGoonAI : MonoBehaviour
         swapped = true;
         yield return new WaitForSeconds(swapCD);
         swapped = false;
+    }
+    IEnumerator WaitNRandSwap()
+    {
+        RANDSwapped = true;
+        yield return new WaitForSeconds(RANDswapCD);
+        RANDSwapped = false;
     }
 }

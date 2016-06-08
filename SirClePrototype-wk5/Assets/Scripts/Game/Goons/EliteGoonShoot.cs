@@ -6,6 +6,7 @@ public class EliteGoonShoot : MonoBehaviour {
     private Cannon gun;
     private BasicGoonAI movement;
     private bool right;
+    private bool once = true;
     private RangeCheck vision;
 
 	// Use this for initialization
@@ -18,15 +19,18 @@ public class EliteGoonShoot : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (movement.h == 1)
-            gun.leftOrRight = 90;
+            gun.direction = 90;
         else
-            gun.leftOrRight = -90;
-        if (vision.IsInRange())
+            gun.direction = -90;
+        if (vision.IsInRange() && once)
         {
+            once = false;
             gun.setCanShoot(true);
         }
-        else
+        else if (!vision.IsInRange())
         {
+            Debug.Log("ONCE SWAP");
+            once = true;
             gun.setCanShoot(false);
         }
     }

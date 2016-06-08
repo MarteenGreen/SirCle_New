@@ -58,6 +58,12 @@
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
@@ -80,15 +86,19 @@
     <Compile Include="Assets\AndrewMenus\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\AndrewMenus\Scripts\SettingsMenu.cs" />
     <Compile Include="Assets\AndrewMenus\Scripts\StartScreen.cs" />
+    <Compile Include="Assets\JumpPad.cs" />
     <Compile Include="Assets\LaneSwapping.cs" />
     <Compile Include="Assets\PlayerZChecks.cs" />
     <Compile Include="Assets\Scripts\Game\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Game\Cannon.cs" />
+    <Compile Include="Assets\Scripts\Game\DayNight.cs" />
     <Compile Include="Assets\Scripts\Game\Death.cs" />
     <Compile Include="Assets\Scripts\Game\Goons\BasicGoonAI.cs" />
+    <Compile Include="Assets\Scripts\Game\Goons\EliteGoonShoot.cs" />
     <Compile Include="Assets\Scripts\Game\Goons\RangeCheck.cs" />
     <Compile Include="Assets\Scripts\Game\HP.cs" />
     <Compile Include="Assets\Scripts\Game\IFrames.cs" />
+    <Compile Include="Assets\Scripts\GeneralZCheck.cs" />
     <Compile Include="Assets\Scripts\Player\CharacterMotor.cs" />
     <Compile Include="Assets\Scripts\Player\DealDamage.cs" />
     <Compile Include="Assets\Scripts\Player\DoubleJumpEnabler.cs" />

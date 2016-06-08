@@ -15,9 +15,9 @@ public class Cannon : MonoBehaviour
     private int shotCount;
     private GameObject LastFiredProjectile;
 
-    private bool CanShoot;
-
-    public float leftOrRight = -90;
+    public bool CanShoot;
+    public bool interrupt = false;
+    public float direction = -90;
 
     // Use this for initialization
     void Start()
@@ -58,7 +58,7 @@ public class Cannon : MonoBehaviour
 
         //Instantiate mustache on our spawn position.
 
-        LastFiredProjectile = GameObject.Instantiate(ProjectileObject, spawnPos, Quaternion.AngleAxis(leftOrRight, Vector3.up)) as GameObject;
+        LastFiredProjectile = GameObject.Instantiate(ProjectileObject, spawnPos, Quaternion.AngleAxis(direction, Vector3.up)) as GameObject;
 
         //Using other script to fire our stache.
         LastFiredProjectile.GetComponent<ScriptProjectile>().Initialize();
@@ -68,11 +68,25 @@ public class Cannon : MonoBehaviour
     IEnumerator CoolDown(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        CanShoot = true;
+        if (!interrupt)
+        {
+            CanShoot = true;
+        }
+        else
+            interrupt = false; 
     }
 
     public void setCanShoot(bool shootEm)
     {
+        Debug.Log(shootEm);
         CanShoot = shootEm;
+        if(shootEm == false)
+        {
+            interrupt = true;
+        }
+        else
+        {
+            interrupt = false;
+        }
     }
 }
